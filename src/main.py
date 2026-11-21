@@ -27,6 +27,17 @@ REQUEST_PATTERNS = [
     "not available", "i want"
 ]
 
+
+# Rule-based opportunity hints. These are hypotheses, not validated product ideas.
+OPPORTUNITY_RULES = [
+    (["تأخر", "متأخر", "لم يصل", "ما وصل", "late", "delivery delay", "never arrived"], "delivery", "Customers mention delivery delays", "Delivery tracking or faster-shipping solution"),
+    (["غالي", "سعره مرتفع", "expensive", "too expensive", "overpriced"], "price", "Customers mention high prices", "Lower-cost option, bundle, or clearer value proposition"),
+    (["خرب", "تالف", "broken", "damaged", "doesn't work", "not working"], "reliability", "Customers report damaged or non-working products", "More durable product or quality-control improvement"),
+    (["صعب", "معقد", "صعب الاستخدام", "difficult to use", "confusing"], "usability", "Customers find the product difficult to use", "Simpler design, setup guide, or onboarding"),
+    (["غير موجود", "ما في", "not available", "out of stock"], "availability", "Customers cannot find the product", "Reliable stock or an alternative product"),
+    (["جودة", "رديء", "poor quality", "low quality"], "quality", "Customers complain about product quality", "Higher-quality version or clearer quality assurance"),
+]
+
 def normalize(text):
     text = unicodedata.normalize("NFKC", str(text or "")).lower()
     text = re.sub(r"[إأآا]", "ا", text)
@@ -44,6 +55,15 @@ def analyze(comment):
     purchase = matches(text, PURCHASE_PATTERNS)
     complaints = matches(text, COMPLAINT_PATTERNS)
     requests = matches(text, REQUEST_PATTERNS)
+    normalized_text = normalize(text)
+    opportunity_hints = []
+    for terms, issue, signal, direction in OPPORTUNITY_RULES:
+        if any(normalize(term) in normalized_text for term in terms):
+            opportunity_hints.append({
+                "issue_type": issue,
+                "customer_signal": signal,
+                "potential_solution_direction": direction,
+            })
     categories = []
     if purchase:
         categories.append("purchase_intent")
@@ -62,6 +82,7 @@ def analyze(comment):
         "matched_purchase_terms": purchase,
         "matched_complaint_terms": complaints,
         "matched_request_terms": requests,
+        "opportunity_hints": opportunity_hints,
     }
 
 def read_csv_url(url, column_name):
@@ -113,7 +134,10 @@ async def main():
             "top_purchase_terms": Counter(
                 term for r in results for term in r["matched_purchase_terms"]
             ).most_common(10),
-            "method_note": "Rule-based keyword matching; results are indicators, not verified buying decisions or sentiment analysis."
+            "opportunity_signal_counts": Counter(
+                hint["issue_type"] for r in results for hint in r["opportunity_hints"]
+            ).most_common(10),
+            "method_note": "Rule-based keyword matching and predefined solution hints; these are hypotheses, not validated market demand."
         }
 
         await Actor.push_data({"record_type": "summary", **summary})
