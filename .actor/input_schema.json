@@ -12,6 +12,12 @@
         "type": "string"
       }
     },
+    "dataset_id": {
+      "title": "Apify dataset ID",
+      "type": "string",
+      "description": "Optional dataset ID from a previous scraper Actor run. Use this, csv_url, or comments.",
+      "editor": "textfield"
+    },
     "csv_url": {
       "title": "CSV URL",
       "type": "string",
