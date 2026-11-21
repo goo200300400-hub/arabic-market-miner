@@ -1,0 +1,29 @@
+{
+  "title": "Arabic Market Miner input",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "comments": {
+      "title": "Comments",
+      "type": "array",
+      "description": "Paste customer comments directly. Use this or csv_url.",
+      "editor": "stringList",
+      "items": {
+        "type": "string"
+      }
+    },
+    "csv_url": {
+      "title": "CSV URL",
+      "type": "string",
+      "description": "Public direct URL to a CSV file. Use this or comments.",
+      "editor": "textfield"
+    },
+    "column_name": {
+      "title": "CSV comment column",
+      "type": "string",
+      "description": "Column name containing comments. Defaults to comment.",
+      "default": "comment"
+    }
+  },
+  "required": []
+}
