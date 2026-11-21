@@ -22,7 +22,8 @@
       "title": "CSV comment column",
       "type": "string",
       "description": "Column name containing comments. Defaults to comment.",
-      "default": "comment"
+      "default": "comment",
+      "editor": "textfield"
     }
   },
   "required": []
