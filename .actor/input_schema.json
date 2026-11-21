@@ -1,12 +1,12 @@
 {
-  "title": "Arabic Market Miner input",
+  "title": "Arabic e-commerce reviews and customer comments",
   "type": "object",
   "schemaVersion": 1,
   "properties": {
     "comments": {
       "title": "Comments",
       "type": "array",
-      "description": "Paste customer comments directly. Use this or csv_url.",
+      "description": "Paste Arabic or English e-commerce reviews, product comments, or customer feedback. Use this, csv_url, or dataset_id.",
       "editor": "stringList",
       "items": {
         "type": "string"
@@ -15,13 +15,13 @@
     "dataset_id": {
       "title": "Apify dataset ID",
       "type": "string",
-      "description": "Optional dataset ID from a previous scraper Actor run. Use this, csv_url, or comments.",
+      "description": "Dataset ID from an Apify reviews/comments scraper run. Best for analyzing collected e-commerce customer feedback.",
       "editor": "textfield"
     },
     "csv_url": {
       "title": "CSV URL",
       "type": "string",
-      "description": "Public direct URL to a CSV file. Use this or comments.",
+      "description": "Public direct URL to a CSV containing e-commerce reviews or customer comments.",
       "editor": "textfield"
     },
     "column_name": {
