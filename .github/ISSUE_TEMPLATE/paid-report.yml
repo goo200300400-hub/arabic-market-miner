@@ -1,0 +1,41 @@
+name: Request the $5 Market Opportunity Report
+description: Tell us if you would actually buy a deeper report for your market.
+title: "[Paid report request] "
+labels: ["paid-interest"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Pilot offer: $5 USD**
+
+        The report will summarize recurring customer complaints, product requests, purchase-intent keyword signals, and possible opportunities from a comment/review dataset. It is a research aid, not proof of sales or guaranteed demand.
+
+        Submitting this request is not a payment and does not obligate you to buy.
+  - type: dropdown
+    id: willingness
+    attributes:
+      label: If the report is delivered as described, would you pay $5?
+      options:
+        - "Yes — I would buy it for $5"
+        - "Maybe — I need to see a sample first"
+        - "No — not at this price"
+    validations:
+      required: true
+  - type: input
+    id: use_case
+    attributes:
+      label: What market, product, or customer comments would you analyze?
+      placeholder: "Example: skincare product reviews in Saudi Arabia"
+    validations:
+      required: true
+  - type: textarea
+    id: desired_result
+    attributes:
+      label: What decision do you want the report to help you make?
+      placeholder: "Example: find the most repeated customer problem before launching a product"
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: |
+        Please do not post private customer data, passwords, or personal information here. This request is public.
