@@ -1,112 +1,14 @@
 {
   "actorOutputSchemaVersion": 1,
+  "title": "Arabic Market Miner output",
+  "description": "Link to the dataset containing the summary and per-comment analysis results.",
+  "type": "object",
   "properties": {
-    "record_type": {
+    "results": {
       "type": "string",
-      "title": "Record type"
-    },
-    "total_comments": {
-      "type": "integer",
-      "title": "Total comments"
-    },
-    "purchase_intent_count": {
-      "type": "integer",
-      "title": "Purchase intent indicators"
-    },
-    "complaint_count": {
-      "type": "integer",
-      "title": "Complaints"
-    },
-    "product_request_count": {
-      "type": "integer",
-      "title": "Product requests"
-    },
-    "general_count": {
-      "type": "integer",
-      "title": "General comments"
-    },
-    "comment": {
-      "type": "string",
-      "title": "Comment"
-    },
-    "categories": {
-      "type": "array",
-      "title": "Categories",
-      "items": {
-        "type": "string"
-      }
-    },
-    "purchase_intent": {
-      "type": "boolean",
-      "title": "Purchase intent indicator"
-    },
-    "complaint": {
-      "type": "boolean",
-      "title": "Complaint indicator"
-    },
-    "product_request": {
-      "type": "boolean",
-      "title": "Product request indicator"
-    },
-    "matched_purchase_terms": {
-      "type": "array",
-      "title": "Matched purchase terms",
-      "items": {
-        "type": "string"
-      }
-    },
-    "matched_complaint_terms": {
-      "type": "array",
-      "title": "Matched complaint terms",
-      "items": {
-        "type": "string"
-      }
-    },
-    "matched_request_terms": {
-      "type": "array",
-      "title": "Matched request terms",
-      "items": {
-        "type": "string"
-      }
-    },
-    "top_complaint_terms": {
-      "type": "array",
-      "title": "Top complaint terms"
-    },
-    "top_purchase_terms": {
-      "type": "array",
-      "title": "Top purchase terms"
-    },
-    "method_note": {
-      "type": "string",
-      "title": "Method note"
-    }
-  },
-  "views": {
-    "overview": {
-      "title": "Arabic Market Miner results",
-      "transformation": {
-        "fields": [
-          "record_type",
-          "comment",
-          "categories",
-          "purchase_intent",
-          "complaint",
-          "product_request",
-          "total_comments",
-          "purchase_intent_count",
-          "complaint_count",
-          "product_request_count",
-          "general_count",
-          "matched_purchase_terms",
-          "matched_complaint_terms",
-          "matched_request_terms",
-          "top_complaint_terms",
-          "top_purchase_terms",
-          "method_note"
-        ]
-      },
-      "display": "table"
+      "title": "Analysis results",
+      "description": "Dataset containing one summary record and one analysis record per comment.",
+      "template": "{{links.apiDefaultDatasetUrl}}/items"
     }
   }
 }
