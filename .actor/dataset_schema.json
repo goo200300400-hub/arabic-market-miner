@@ -1,0 +1,144 @@
+{
+  "actorSpecification": 1,
+  "title": "Arabic e-commerce customer feedback analysis",
+  "description": "Summary and per-comment analysis of Arabic and English e-commerce reviews and customer comments.",
+  "fields": {
+    "type": "object",
+    "properties": {
+      "record_type": {
+        "type": "string",
+        "title": "Record type",
+        "description": "summary or comment_analysis"
+      },
+      "total_comments": {
+        "type": "integer",
+        "title": "Total comments"
+      },
+      "purchase_intent_count": {
+        "type": "integer",
+        "title": "Buying-signal comments"
+      },
+      "complaint_count": {
+        "type": "integer",
+        "title": "Complaint comments"
+      },
+      "product_request_count": {
+        "type": "integer",
+        "title": "Product-request comments"
+      },
+      "general_count": {
+        "type": "integer",
+        "title": "Other comments"
+      },
+      "top_complaint_terms": {
+        "type": "array",
+        "title": "Top complaint terms"
+      },
+      "top_purchase_terms": {
+        "type": "array",
+        "title": "Top buying-signal terms"
+      },
+      "opportunity_signal_counts": {
+        "type": "array",
+        "title": "Pain-point signal counts"
+      },
+      "method_note": {
+        "type": "string",
+        "title": "Method note"
+      },
+      "comment": {
+        "type": "string",
+        "title": "Customer comment"
+      },
+      "categories": {
+        "type": "array",
+        "title": "Matched categories",
+        "items": {
+          "type": "string"
+        }
+      },
+      "purchase_intent": {
+        "type": "boolean",
+        "title": "Buying keyword detected"
+      },
+      "complaint": {
+        "type": "boolean",
+        "title": "Complaint keyword detected"
+      },
+      "product_request": {
+        "type": "boolean",
+        "title": "Product-request keyword detected"
+      },
+      "matched_purchase_terms": {
+        "type": "array",
+        "title": "Matched buying terms",
+        "items": {
+          "type": "string"
+        }
+      },
+      "matched_complaint_terms": {
+        "type": "array",
+        "title": "Matched complaint terms",
+        "items": {
+          "type": "string"
+        }
+      },
+      "matched_request_terms": {
+        "type": "array",
+        "title": "Matched product-request terms",
+        "items": {
+          "type": "string"
+        }
+      },
+      "opportunity_hints": {
+        "type": "array",
+        "title": "Possible solution directions"
+      }
+    }
+  },
+  "views": {
+    "overview": {
+      "title": "Summary",
+      "description": "Top-level counts and repeated market signals.",
+      "transformation": {
+        "fields": [
+          "record_type",
+          "total_comments",
+          "purchase_intent_count",
+          "complaint_count",
+          "product_request_count",
+          "general_count",
+          "top_complaint_terms",
+          "top_purchase_terms",
+          "opportunity_signal_counts",
+          "method_note"
+        ],
+        "limit": 1
+      },
+      "display": {
+        "component": "table"
+      }
+    },
+    "comment_details": {
+      "title": "Comment details",
+      "description": "Each customer comment with detected categories, matching terms, and possible solution directions.",
+      "transformation": {
+        "fields": [
+          "record_type",
+          "comment",
+          "categories",
+          "purchase_intent",
+          "complaint",
+          "product_request",
+          "matched_purchase_terms",
+          "matched_complaint_terms",
+          "matched_request_terms",
+          "opportunity_hints"
+        ]
+      },
+      "display": {
+        "component": "table"
+      }
+    }
+  }
+}
