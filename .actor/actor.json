@@ -5,8 +5,7 @@
   "description": "Analyze Arabic and English customer comments for purchase-intent indicators, complaints, and product requests.",
   "version": "0.1",
   "buildTag": "latest",
-  "input": {
-    "schema": "./input_schema.json"
-  },
-  "dockerfile": "./Dockerfile"
+  "input": "./input_schema.json",
+  "dockerfile": "./Dockerfile",
+  "readme": "./README.md"
 }
