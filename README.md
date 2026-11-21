@@ -28,6 +28,10 @@ The default dataset contains one summary record followed by one analysis record 
 
 This Actor is designed as a lightweight second step after a comments/reviews scraper: it can read an Apify dataset directly, then identify buyer-intent indicators and recurring customer problems. It uses transparent keyword matching and predefined rules to suggest possible solution directions for recurring pain points. These are research hints, not validated product opportunities. It does not understand context like a human, verify actual purchase intent, or perform advanced sentiment analysis. Review source comments and validate demand before making business decisions.
 
+## Sample report
+
+See [an illustrative Arabic e-commerce feedback report](SAMPLE_REPORT.md). The example data is fictional and demonstrates the format only.
+
 ## Run locally
 
 Install dependencies with `pip install -r requirements.txt`, then run with the Apify platform or Apify CLI.
