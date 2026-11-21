@@ -1,0 +1,117 @@
+{
+  "actorSpecification": 1,
+  "fields": [
+    {
+      "id": "record_type",
+      "type": "string",
+      "label": "Record type"
+    },
+    {
+      "id": "total_comments",
+      "type": "number",
+      "label": "Total comments"
+    },
+    {
+      "id": "purchase_intent_count",
+      "type": "number",
+      "label": "Purchase intent indicators"
+    },
+    {
+      "id": "complaint_count",
+      "type": "number",
+      "label": "Complaints"
+    },
+    {
+      "id": "product_request_count",
+      "type": "number",
+      "label": "Product requests"
+    },
+    {
+      "id": "general_count",
+      "type": "number",
+      "label": "General comments"
+    },
+    {
+      "id": "comment",
+      "type": "string",
+      "label": "Comment"
+    },
+    {
+      "id": "categories",
+      "type": "json",
+      "label": "Categories"
+    },
+    {
+      "id": "purchase_intent",
+      "type": "boolean",
+      "label": "Purchase intent indicator"
+    },
+    {
+      "id": "complaint",
+      "type": "boolean",
+      "label": "Complaint indicator"
+    },
+    {
+      "id": "product_request",
+      "type": "boolean",
+      "label": "Product request indicator"
+    },
+    {
+      "id": "matched_purchase_terms",
+      "type": "json",
+      "label": "Matched purchase terms"
+    },
+    {
+      "id": "matched_complaint_terms",
+      "type": "json",
+      "label": "Matched complaint terms"
+    },
+    {
+      "id": "matched_request_terms",
+      "type": "json",
+      "label": "Matched request terms"
+    },
+    {
+      "id": "top_complaint_terms",
+      "type": "json",
+      "label": "Top complaint terms"
+    },
+    {
+      "id": "top_purchase_terms",
+      "type": "json",
+      "label": "Top purchase terms"
+    },
+    {
+      "id": "method_note",
+      "type": "string",
+      "label": "Method note"
+    }
+  ],
+  "views": {
+    "overview": {
+      "title": "Arabic Market Miner results",
+      "transformation": {
+        "fields": [
+          "record_type",
+          "comment",
+          "categories",
+          "purchase_intent",
+          "complaint",
+          "product_request",
+          "total_comments",
+          "purchase_intent_count",
+          "complaint_count",
+          "product_request_count",
+          "general_count",
+          "matched_purchase_terms",
+          "matched_complaint_terms",
+          "matched_request_terms",
+          "top_complaint_terms",
+          "top_purchase_terms",
+          "method_note"
+        ]
+      },
+      "display": "table"
+    }
+  }
+}
