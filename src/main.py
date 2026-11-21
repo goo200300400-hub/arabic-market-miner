@@ -1,5 +1,6 @@
 import csv
 import io
+import os
 import re
 import unicodedata
 from collections import Counter
@@ -85,6 +86,22 @@ def analyze(comment):
         "opportunity_hints": opportunity_hints,
     }
 
+def read_dataset(dataset_id, column_name):
+    token = os.environ.get("APIFY_TOKEN")
+    if not token:
+        raise ValueError("APIFY_TOKEN is unavailable; use comments or csv_url instead.")
+    url = f"https://api.apify.com/v2/datasets/{dataset_id}/items"
+    response = requests.get(url, params={"token": token, "clean": "true", "format": "json"}, timeout=60)
+    response.raise_for_status()
+    rows = response.json()
+    if not isinstance(rows, list) or not rows:
+        raise ValueError("The dataset is empty or does not contain readable rows.")
+    candidates = [column_name, "comment", "text", "تعليق", "التعليق", "commentText", "content", "description"]
+    selected = next((name for name in candidates if name and any(name in row for row in rows)), None)
+    if not selected:
+        raise ValueError("Could not find a text column in the dataset. Set column_name to the correct field.")
+    return [row.get(selected, "") for row in rows]
+
 def read_csv_url(url, column_name):
     parsed = urlparse(url)
     if parsed.scheme not in ("http", "https"):
@@ -109,14 +126,17 @@ async def main():
         actor_input = await Actor.get_input() or {}
         comments = actor_input.get("comments") or []
         csv_url = actor_input.get("csv_url")
+        dataset_id = actor_input.get("dataset_id")
         column_name = actor_input.get("column_name", "comment")
 
-        if csv_url:
+        if dataset_id:
+            comments = read_dataset(dataset_id, column_name)
+        elif csv_url:
             comments = read_csv_url(csv_url, column_name)
         if isinstance(comments, str):
             comments = [comments]
         if not isinstance(comments, list) or not comments:
-            raise ValueError("Provide a non-empty 'comments' array or a public 'csv_url'.")
+            raise ValueError("Provide a non-empty 'comments' array, a public 'csv_url', or a 'dataset_id'.")
 
         results = [analyze(item) for item in comments if str(item or "").strip()]
         if not results:
