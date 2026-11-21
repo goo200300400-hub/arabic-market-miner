@@ -2,11 +2,14 @@
   "actorSpecification": 1,
   "name": "arabic-market-miner",
   "title": "Arabic Market Miner",
-  "description": "Analyze Arabic and English customer comments for purchase-intent indicators, complaints, and product requests.",
+  "description": "Analyze Arabic and English e-commerce reviews and customer comments to surface recurring complaints, product requests, and keyword-based buying signals.",
   "version": "0.1",
   "buildTag": "latest",
   "input": "./input_schema.json",
   "output": "./output_schema.json",
   "dockerfile": "./Dockerfile",
-  "readme": "./README.md"
+  "readme": "./README.md",
+  "storages": {
+    "dataset": "./dataset_schema.json"
+  }
 }
