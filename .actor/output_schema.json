@@ -1,92 +1,87 @@
 {
   "actorOutputSchemaVersion": 1,
-  "fields": [
-    {
-      "id": "record_type",
+  "properties": {
+    "record_type": {
       "type": "string",
-      "label": "Record type"
+      "title": "Record type"
     },
-    {
-      "id": "total_comments",
-      "type": "number",
-      "label": "Total comments"
+    "total_comments": {
+      "type": "integer",
+      "title": "Total comments"
     },
-    {
-      "id": "purchase_intent_count",
-      "type": "number",
-      "label": "Purchase intent indicators"
+    "purchase_intent_count": {
+      "type": "integer",
+      "title": "Purchase intent indicators"
     },
-    {
-      "id": "complaint_count",
-      "type": "number",
-      "label": "Complaints"
+    "complaint_count": {
+      "type": "integer",
+      "title": "Complaints"
     },
-    {
-      "id": "product_request_count",
-      "type": "number",
-      "label": "Product requests"
+    "product_request_count": {
+      "type": "integer",
+      "title": "Product requests"
     },
-    {
-      "id": "general_count",
-      "type": "number",
-      "label": "General comments"
+    "general_count": {
+      "type": "integer",
+      "title": "General comments"
     },
-    {
-      "id": "comment",
+    "comment": {
       "type": "string",
-      "label": "Comment"
+      "title": "Comment"
     },
-    {
-      "id": "categories",
-      "type": "json",
-      "label": "Categories"
+    "categories": {
+      "type": "array",
+      "title": "Categories",
+      "items": {
+        "type": "string"
+      }
     },
-    {
-      "id": "purchase_intent",
+    "purchase_intent": {
       "type": "boolean",
-      "label": "Purchase intent indicator"
+      "title": "Purchase intent indicator"
     },
-    {
-      "id": "complaint",
+    "complaint": {
       "type": "boolean",
-      "label": "Complaint indicator"
+      "title": "Complaint indicator"
     },
-    {
-      "id": "product_request",
+    "product_request": {
       "type": "boolean",
-      "label": "Product request indicator"
+      "title": "Product request indicator"
     },
-    {
-      "id": "matched_purchase_terms",
-      "type": "json",
-      "label": "Matched purchase terms"
+    "matched_purchase_terms": {
+      "type": "array",
+      "title": "Matched purchase terms",
+      "items": {
+        "type": "string"
+      }
     },
-    {
-      "id": "matched_complaint_terms",
-      "type": "json",
-      "label": "Matched complaint terms"
+    "matched_complaint_terms": {
+      "type": "array",
+      "title": "Matched complaint terms",
+      "items": {
+        "type": "string"
+      }
     },
-    {
-      "id": "matched_request_terms",
-      "type": "json",
-      "label": "Matched request terms"
+    "matched_request_terms": {
+      "type": "array",
+      "title": "Matched request terms",
+      "items": {
+        "type": "string"
+      }
     },
-    {
-      "id": "top_complaint_terms",
-      "type": "json",
-      "label": "Top complaint terms"
+    "top_complaint_terms": {
+      "type": "array",
+      "title": "Top complaint terms"
     },
-    {
-      "id": "top_purchase_terms",
-      "type": "json",
-      "label": "Top purchase terms"
+    "top_purchase_terms": {
+      "type": "array",
+      "title": "Top purchase terms"
     },
-    {
-      "id": "method_note",
+    "method_note": {
       "type": "string",
-      "label": "Method note"
+      "title": "Method note"
     }
-  ],
+  },
   "views": {
     "overview": {
       "title": "Arabic Market Miner results",
