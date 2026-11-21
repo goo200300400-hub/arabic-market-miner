@@ -4,7 +4,7 @@ An Apify Actor that analyzes Arabic and English customer comments and identifies
 
 ## Input
 
-Provide either a `comments` array or a publicly accessible direct `csv_url`. For CSV input, the comment column defaults to `comment`; common alternatives `text`, `تعليق`, and `التعليق` are also detected. Set `column_name` to override this.
+Provide a `comments` array, a publicly accessible direct `csv_url`, or an Apify `dataset_id` from a previous scraper run. For CSV or dataset input, the text column defaults to `comment`; common alternatives `text`, `تعليق`, and `التعليق` are also detected. Set `column_name` to override this.
 
 Example:
 
@@ -18,13 +18,15 @@ Example:
 }
 ```
 
+For a scraper-to-analysis workflow, run a comments/reviews scraper first, copy its default dataset ID, and pass it as `dataset_id`. The Actor reads the dataset using the current Apify account token.
+
 ## Output
 
 The default dataset contains one summary record followed by one analysis record per comment. Fields include purchase-intent indicators, complaint indicators, product-request indicators, matched keywords, and `opportunity_hints` when predefined pain-point phrases are detected. The summary also includes counts by opportunity issue type.
 
 ## Important limitation
 
-This Actor uses transparent keyword matching and predefined rules to suggest possible solution directions for recurring pain points. These are research hints, not validated product opportunities. It does not understand context like a human, verify actual purchase intent, or perform advanced sentiment analysis. Review source comments and validate demand before making business decisions.
+This Actor is designed as a lightweight second step after a comments/reviews scraper: it can read an Apify dataset directly, then identify buyer-intent indicators and recurring customer problems. It uses transparent keyword matching and predefined rules to suggest possible solution directions for recurring pain points. These are research hints, not validated product opportunities. It does not understand context like a human, verify actual purchase intent, or perform advanced sentiment analysis. Review source comments and validate demand before making business decisions.
 
 ## Run locally
 
