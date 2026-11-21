@@ -20,11 +20,11 @@ Example:
 
 ## Output
 
-The default dataset contains one summary record followed by one analysis record per comment. Fields include purchase-intent indicators, complaint indicators, product-request indicators, and matched keywords.
+The default dataset contains one summary record followed by one analysis record per comment. Fields include purchase-intent indicators, complaint indicators, product-request indicators, matched keywords, and `opportunity_hints` when predefined pain-point phrases are detected. The summary also includes counts by opportunity issue type.
 
 ## Important limitation
 
-This first version uses transparent keyword matching. It does not understand context like a human, verify actual purchase intent, or perform advanced sentiment analysis. Review results before making business decisions.
+This Actor uses transparent keyword matching and predefined rules to suggest possible solution directions for recurring pain points. These are research hints, not validated product opportunities. It does not understand context like a human, verify actual purchase intent, or perform advanced sentiment analysis. Review source comments and validate demand before making business decisions.
 
 ## Run locally
 
